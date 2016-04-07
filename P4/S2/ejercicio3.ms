@@ -5,7 +5,7 @@ cp3 = box length:5 width:5 height:5 pos:[-25,40,0] wireColor:red
 cp4 = box length:2 width:2 height:2 wireColor:yellow
 cp5 = box length:2 width:2 height:2 wireColor:yellow
 
-fn casteljau Traveler CP1 CP2 CP3 CP4 CP5= 
+fn interpolacionCuadratica Traveler CP1 CP2 CP3 CP4 CP5= 
 (
 	V1 = (CP2-CP1)
 	V2 = (CP3-CP2)
@@ -28,4 +28,4 @@ fn casteljau Traveler CP1 CP2 CP3 CP4 CP5=
 	Traveler.showTrajectory = on
 )
 
-casteljau ball cp1.pos cp2.pos cp3.pos cp4 cp5
+interpolacionCuadratica ball cp1.pos cp2.pos cp3.pos cp4 cp5
