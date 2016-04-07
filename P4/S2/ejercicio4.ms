@@ -1,8 +1,8 @@
 ball = sphere radius:8 wireColor:blue
 cp1 = box length:5 width:5 height:5 pos:[-60,10,0] wireColor:red
 cp2 = box length:5 width:5 height:5 pos:[-10,100,0] wireColor:red
-cp3 = box length:5 width:5 height:5 pos:[60,-10,0] wireColor:red
-cp4 = box length:5 width:5 height:5 pos:[20,-80,0] wireColor:red
+cp3 = box length:5 width:5 height:5 pos:[20,-80,0] wireColor:red
+cp4 = box length:5 width:5 height:5 pos:[60,-10,0] wireColor:red
 cp5 = box length:2 width:2 height:2 wireColor:yellow
 cp6 = box length:2 width:2 height:2 wireColor:yellow
 cp7 = box length:2 width:2 height:2 wireColor:yellow
@@ -28,13 +28,15 @@ fn interpolacionCubica Traveler CP1 CP2 CP3 CP4 CP5 CP6 CP7 CP8 CP9=
 				V4 = (CP6.pos - CP5.pos)
 				V5 = (CP7.pos - CP6.pos)
 				
+				CP8.pos = CP5.pos + ((normalize V4)*(((length V4)/100)*t))
+				CP9.pos = CP6.pos + ((normalize V5)*(((length V5)/100)*t))
 				
-				
+				V6 = (CP9.pos - CP8.pos)
+				Traveler.pos = CP8.pos + ((normalize V6)*(((length V6)/100)*t))
 			)
 			
 		)
 	)
-	
 	Traveler.showTrajectory = on
 )
 
