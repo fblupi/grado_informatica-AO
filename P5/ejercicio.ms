@@ -2,18 +2,19 @@ Function Saltar Traveler CPs T_ini T_salto=
 (
 	for i = 1 to CPs.count - 1 do
 	(
-		print i
 		T_salto_ini = (i - 1) * T_salto
 		T_salto_fin = i * T_salto
-		InterpolacionCuadratica Traveler CPs[i].pos CPs[i + 1].pos T_salto_ini T_salto_fin
+		InterpolacionCuadratica Traveler CPs[i].pos CPs[i + 1].pos T_salto_ini T_salto_fin (random 0.5 2)
 	)
 )
 
-Function InterpolacionCuadratica Traveler CP_ini CP_fin T_ini T_fin=
+Function InterpolacionCuadratica Traveler CP_ini CP_fin T_ini T_fin H=
 (
+	print H
+	
 	CP_aux.x = (CP_ini.x + CP_fin.x) / 2
 	CP_aux.y = (CP_ini.y + CP_fin.y) / 2
-	CP_aux.z = distance CP_ini CP_fin
+	CP_aux.z = (distance CP_ini CP_fin) * H
 	
 	V1 = CP_aux - CP_ini
 	V2 = CP_fin - CP_aux
