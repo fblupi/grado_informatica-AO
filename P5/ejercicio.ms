@@ -4,23 +4,23 @@ fn SquashAndStretch Traveler T T_ini T_fin=
 	(
 		at time (T_ini)
 		(
-			scale Traveler [1.1, 1.1, 0.9]
+			scale Traveler [1.1, 1.1, 0.9] --aplasta
+		)
+		at time (T_ini + (T / 8))
+		(
+			scale Traveler [0.9, 0.9, 1.1] --pos. original
 		)
 		at time (T_ini + (T / 4))
 		(
-			scale Traveler [0.8, 0.8, 1.2]
+			scale Traveler [0.8, 0.8, 1.2] --estira
 		)
 		at time (T_ini + (T / 2))
 		(
-			scale Traveler [1.1, 1.1, 0.9]
-		)
-		at time (T_fin - (T / 4))
-		(
-			scale Traveler [0.9, 0.9, 1.1]
+			scale Traveler [1.2, 1.2, 0.8] --pos. original
 		)
 		at time (T_fin - (T / 8))
 		(
-			scale Traveler [1.1, 1.1, 0.9]
+			scale Traveler [1, 1, 1] --pos. original
 		)
 	)
 )
