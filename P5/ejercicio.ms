@@ -1,20 +1,34 @@
-Function Saltar Traveler CPs T_ini T_salto=
+fn SquashAndStretch Traveler T T_ini T_fin=
 (
-	for i = 1 to CPs.count - 1 do
+	animate on 
 	(
-		T_salto_ini = (i - 1) * T_salto
-		T_salto_fin = i * T_salto
-		InterpolacionCuadratica Traveler CPs[i].pos CPs[i + 1].pos T_salto_ini T_salto_fin (random 0.5 2)
+		at time (T_ini)
+		(
+			scale Traveler [1.1, 1.1, 0.9]
+		)
+		at time (T_ini + (T / 4))
+		(
+			scale Traveler [0.8, 0.8, 1.2]
+		)
+		at time (T_ini + (T / 2))
+		(
+			scale Traveler [1.1, 1.1, 0.9]
+		)
+		at time (T_fin - (T / 4))
+		(
+			scale Traveler [0.9, 0.9, 1.1]
+		)
+		at time (T_fin - (T / 8))
+		(
+			scale Traveler [1.1, 1.1, 0.9]
+		)
 	)
 )
 
-Function InterpolacionCuadratica Traveler CP_ini CP_fin T_ini T_fin H=
+fn InterpolacionCuadratica Traveler CP_ini CP_fin T_ini T_fin H=
 (
-	print H
 	
-	CP_aux.x = (CP_ini.x + CP_fin.x) / 2
-	CP_aux.y = (CP_ini.y + CP_fin.y) / 2
-	CP_aux.z = (distance CP_ini CP_fin) * H
+	CP_aux = [(CP_ini.x + CP_fin.x) / 2, (CP_ini.y + CP_fin.y) / 2, (distance CP_ini CP_fin) * H]
 	
 	V1 = CP_aux - CP_ini
 	V2 = CP_fin - CP_aux
@@ -33,6 +47,17 @@ Function InterpolacionCuadratica Traveler CP_ini CP_fin T_ini T_fin H=
 				Traveler.pos = CP4 + (normalize V3 * (length V3 / (T_fin - T_ini) * (T - T_ini)))
 			)
 		)
+	)
+)
+
+fn Saltar Traveler CPs T_ini T_salto=
+(
+	for i = 1 to CPs.count - 1 do
+	(
+		T_salto_ini = (i - 1) * T_salto
+		T_salto_fin = i * T_salto
+		InterpolacionCuadratica Traveler CPs[i].pos CPs[i + 1].pos T_salto_ini T_salto_fin (random 0.5 2)
+		SquashAndStretch Traveler T_salto T_salto_ini T_salto_fin
 	)
 )
 
