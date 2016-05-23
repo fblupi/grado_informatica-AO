@@ -1,0 +1,48 @@
+Rigging y Skinning AT-AT
+========================
+
+En primer lugar creé el modelo con objetos simples (cajas, cilindros y esferas).
+
+Una vez creado, creé el esqueleto con huesos. Una tira de huesos para cada pata
+y otra para el cuerpo, cuello y cabeza.
+
+Creé controladores para el cuello; la cadera, la rodilla y el tobillo de cada 
+pierna y otro que englobase todo el objeto.
+
+Una vez creados, alineé los pivotes de cada controlador con el del hueso que le 
+corresponde y cambié los enlaces (de padre a hijo):
+	- Controlador global
+		- Controlador cadera
+			- Hueso cadera
+				- Controlador rodilla
+					- Hueso rodilla
+						- Controlador tobillo
+							- Hueso tobillo
+		- ... se repite la rama anterior por cada pata
+		- Hueso cuerpo
+			- Controlador cuello
+				- Hueso cuello
+					- Hueso cabeza
+
+A esos controladores les restringí las transformaciones, para que:
+	- En el caso del del cuello solo rotase en los ejes X e Y.
+	- En el caso de los de las patas solo rotase en el eje Y.
+	- En el caso del general permito todas las transformaciones.
+	
+A continuación, para terminar la etapa del rigging, seguí restringiendo las 
+transformaciones, pero esta vez añadiendo límites:
+	- En la cabeza para las transformaciones en ambos ejes mínimo -60º y 
+	máximo 60º.
+	- En las caderas mínimo -90º y máximo 90º
+	- En las rodillas y los tobillos mínimo -90º y máximo 0º.
+
+Para terminar, realicé el skinning con el rig creado haciendo corresponder:
+	- A la cabeza el hueso de la cabeza.
+	- Al cuello el hueso del cuello.
+	- Al cuerpo el hueso del cuerpo.
+	- A las caderas el hueso de la cadera correspondiente.
+	- A los muslos el hueso de la cadera correspondiente.
+	- A las rodillas el hueso de la rodilla correspondiente.
+	- A las piernas el hueso de la rodilla correspondiente.
+	- A los tobillos el hueso del tobillo correspondiente.
+	- A los pies el hueso del tobillo correspondiente.
