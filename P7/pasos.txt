@@ -33,8 +33,8 @@ A continuación, para terminar la etapa del rigging, seguí restringiendo las
 transformaciones, pero esta vez añadiendo límites:
 	- En la cabeza para las transformaciones en ambos ejes mínimo -60º y 
 	máximo 60º.
-	- En las caderas mínimo -90º y máximo 90º
-	- En las rodillas y los tobillos mínimo -90º y máximo 0º.
+	- En las caderas, tobillos y rodillas traseras mínimo -90º y máximo 90º.
+	- En las rodillas delanteras mínimo -90º y máximo 0º.
 
 Para terminar, realicé el skinning con el rig creado haciendo corresponder:
 	- A la cabeza el hueso de la cabeza.
